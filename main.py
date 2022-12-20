@@ -9,7 +9,7 @@ if run_mode not in ['--lightshows', '--brightness']:
     exit()
 
 ROOT_PATH = pathlib.Path().resolve()
-INPUT_FILE = ROOT_PATH.joinpath('input.txt')
+INPUT_FILE = ROOT_PATH.joinpath('input_verif_test.txt')
 
 if not INPUT_FILE.is_file():
     print('We could not find any input.txt file. Please create one then run again.')
@@ -83,12 +83,12 @@ else:
                         bulbs[ix, iy] = 0
                 elif run_mode == '--brightness':
                     if mission['event'] == events[0]:
-                        bulbs[ix, iy] = bulbs[ix, iy] + 1
+                        bulbs[ix, iy] += 1
                     elif mission['event'] == events[1]:
-                        bulbs[ix, iy] = bulbs[ix, iy] + 2
+                        bulbs[ix, iy] += 2
                     elif mission['event'] == events[2]:
                         if bulbs[ix, iy] > 0:
-                            bulbs[ix, iy] = bulbs[ix, iy] - 1
+                            bulbs[ix, iy] -= 1
 
         if run_mode == '--lightshows':
             print('(Lightshows) Mission: ' + mission['event'] + ' -> From: (' + str(mission['from']['X']) + ',' + str(mission['from']['Y']) + ') To: (' + str(mission['to']['X']) + ',' + str(mission['to']['Y']) + '). Count of lights (ON): ' + str(np.count_nonzero(bulbs == 1)))
