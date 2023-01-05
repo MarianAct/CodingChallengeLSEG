@@ -9,7 +9,7 @@ if run_mode not in ['--lightshows', '--brightness']:
     exit()
 
 ROOT_PATH = pathlib.Path().resolve()
-INPUT_FILE = ROOT_PATH.joinpath('input_verif_test.txt')
+INPUT_FILE = ROOT_PATH.joinpath('input.txt')
 
 if not INPUT_FILE.is_file():
     print('We could not find any input.txt file. Please create one then run again.')
